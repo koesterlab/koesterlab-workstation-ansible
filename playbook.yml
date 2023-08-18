@@ -11,6 +11,14 @@
         gpgkey: https://packages.microsoft.com/keys/microsoft.asc
         gpgcheck: yes
 
+    - name: Enable Fedora Coprs
+      become: yes
+      community.general.copr:
+        name: "{{ item }}"
+      loop:
+        - atim/nushell
+
+
     - name: Install packages
       become: yes
       package:
@@ -20,10 +28,11 @@
           - cargo
           - git
           - cmake
+          - nushell
+          - util-linux-user
           - "@Development Tools"
 
     - name: Install vcode extensions
-      become: yes
       command: "code --install-extension {{ item }}"
       loop:
         - tfehlmann.snakefmt
@@ -34,3 +43,40 @@
         - GitHub.copilot
         - GitHub.vscode-pull-request-github
         - GitHub.remotehub
+
+    - name: Setup SSH
+      copy:
+        dest: ~/.ssh/config
+        content: |
+          Host *
+            AddKeysToAgent yes
+            CanonicalizeHostname yes
+
+          Host ikim
+            HostName login.ikim.uk-essen.de
+            User $USERNAME
+            IdentityFile ~/.ssh/id_ikim
+            ForwardAgent yes
+
+          Host g1-? c? c?? shellhost
+            Hostname %h.ikim.uk-essen.de
+            User $USERNAME
+            IdentityFile ~/.ssh/id_ikim
+            ProxyJump ikim
+            ForwardAgent yes
+
+    - name: Setup shell functions and aliases
+      copy:
+        dest: ~/.profile
+        content: |
+          alias ikim-proxy="ssh -fND 7001 ikim"
+
+    - name: Register nushell
+      become: yes
+      lineinfile:
+        dest: /etc/shells
+        line: /usr/bin/nu
+
+    - name: Setup nushell as default
+      become: yes
+      command: "chsh -s /usr/bin/nu {{ ansible_user_id }}"
