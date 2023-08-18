@@ -1,28 +1,36 @@
 - hosts: 127.0.0.1
   tasks:
+    # taken from https://github.com/gantsign/ansible-role-visual-studio-code
+    - name: Install VS Code repo
+      become: yes
+      ansible.builtin.yum_repository:
+        name: code
+        description: Visual Studio Code repo
+        file: vscode
+        baseurl: https://packages.microsoft.com/yumrepos/vscode
+        gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+        gpgcheck: yes
 
-    # Deploy roles from ansible galaxy (always pin a version)
-    - name: Deploy vscode role
-      community.general.ansible_galaxy_install:
-        type: role
-        name: gantsign.visual-studio-code:6.11.0
+    - name: Install packages
+      become: yes
+      package:
+        name:
+          - code
+          - rust
+          - cargo
+          - git
+          - cmake
+          - "@Development Tools"
 
-    - name: Deploy rustup role
-      community.general.ansible_galaxy_install:
-        type: role
-        name: naftulikay.rust-dev:3.2.0
-
-    # Run tasks and roles
-    - name: Setup vscode
-      include_role: 
-        name: gantsign.visual-studio-code
-      vars:
-        users:
-          - username: "{{ ansible_user_id }}"
-            visual_studio_code_extensions:
-              - tfehlmann.snakefmt
-    - name: Setup rust
-      include_role:
-        name: naftulikay.rust-dev
-      vars:
-        rust_user: "{{ ansible_user_id }}"
+    - name: Install vcode extensions
+      become: yes
+      command: "code --install-extension {{ item }}"
+      loop:
+        - tfehlmann.snakefmt
+        - Snakemake.snakemake-lang
+        - ms-vscode-remote.remote-ssh
+        - rust-lang.rust-analyzer
+        - mechatroner.rainbow-csv
+        - GitHub.copilot
+        - GitHub.vscode-pull-request-github
+        - GitHub.remotehub
