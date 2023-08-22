@@ -55,3 +55,9 @@ ansible-playbook -K playbook.yml
 You will be asked for the `BECOME password`. This is simply your user password.
 In order to adapt to changes in the workstation setup, simply rerun the playbook with the same command.
 Ansible will automatically only execute the changes.
+
+
+### Step 5: Optionally enable fractional scaling of fonts (to get larger font sizes)
+
+This is still experimental in linux, and therefore should be only enabled if you need it to be able to properly read.
+Instructions can be found [here](https://www.linuxfordevices.com/tutorials/centos/enable-fractional-scaling-fedora).
