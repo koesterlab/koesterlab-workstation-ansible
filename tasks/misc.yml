@@ -7,3 +7,4 @@
       - starship
       - intel-media-driver
       - dnf-automatic
+      - texlive-scheme-full
