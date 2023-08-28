@@ -1,0 +1,32 @@
+name: test playbook
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Generate dummy keys for testing
+      run: |
+        ssh-keygen -f ~/.ssh/id_ikim -N testpass
+        ssh-keygen -f ~/.ssh/id_git -N testpass
+
+    - uses: BoundfoxStudios/action-write-file@v1
+      with:
+        path: ${{ env.home}}/.config/ansible/vars.yml
+        contents: |
+          ikim_username: dummy
+          ikim_ssh_key: id_ikim
+          git_ssh_key: id_git
+          git_email: dommy@noreply.github.com
+          git_name: Dummy
+        write-mode: overwrite
+
+    - name: test playbook on fedora:latest
+      uses: roles-ansible/check-ansible-fedora-latest-action@master
+      with:
+        targets: "playbook.yml"
+        hosts: "127.0.0.1"
