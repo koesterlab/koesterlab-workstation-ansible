@@ -14,7 +14,8 @@ jobs:
         ssh-keygen -f ~/.ssh/id_ikim -N testpass
         ssh-keygen -f ~/.ssh/id_git -N testpass
 
-    - uses: BoundfoxStudios/action-write-file@v1
+    - name: Create dummy config file
+      uses: BoundfoxStudios/action-write-file@v1
       with:
         path: /home/runner/.config/ansible/vars.yml
         contents: |
@@ -25,8 +26,14 @@ jobs:
           git_name: Dummy
         write-mode: overwrite
 
-    - run: |
-        touch hosts.ini
+    - name: Create dummy hosts file
+      uses: BoundfoxStudios/action-write-file@v1
+      with:
+        path: hosts.ini
+        contents: |
+          [all]
+
+        write-mode: overwrite
 
     - name: test playbook on fedora:latest
       uses: roles-ansible/check-ansible-fedora-latest-action@master
