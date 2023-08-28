@@ -25,11 +25,8 @@ jobs:
           git_name: Dummy
         write-mode: overwrite
 
-    - uses: BoundfoxStudios/action-write-file@v1
-      with:
-        path: hosts.ini
-        contents: ""
-        write-mode: overwrite
+    - run: |
+        touch hosts.ini
 
     - name: test playbook on fedora:latest
       uses: roles-ansible/check-ansible-fedora-latest-action@master
