@@ -16,7 +16,7 @@ jobs:
 
     - uses: BoundfoxStudios/action-write-file@v1
       with:
-        path: ${{ env.home}}/.config/ansible/vars.yml
+        path: /home/runner/.config/ansible/vars.yml
         contents: |
           ikim_username: dummy
           ikim_ssh_key: id_ikim
