@@ -4,6 +4,14 @@
     - ~/.config/ansible/vars.yml
 
   tasks:
+    - name: Get device info
+      shell: hostnamectl --json pretty
+      register: device_info_raw
+
+    - name: Store device info
+      set_fact:
+        device_info: "{{ device_info_raw.stdout | from_json }}"
+
     - include_tasks: tasks/coprs.yml
 
     - include_tasks: tasks/framework.yml

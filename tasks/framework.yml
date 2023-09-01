@@ -4,3 +4,6 @@
   shell: |
     sudo grubby --update-kernel=ALL --args="module_blacklist=hid_sensor_hub"
     sudo grubby --update-kernel=ALL --args="nvme.noacpi=1"
+  when: >
+    device_info["HardwareVendor"] == "Framework" and
+    device_info["HardwareModel"] == "Laptop _13th Gen Intel Core_"
