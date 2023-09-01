@@ -3,7 +3,6 @@
   package:
     name:
       - util-linux-user
-      - discord
       - starship
       - intel-media-driver
       - dnf-automatic

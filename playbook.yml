@@ -24,6 +24,8 @@
 
     - include_tasks: tasks/ssh.yml
 
+    - include_tasks: tasks/discord.yml
+
     - include_tasks: tasks/misc.yml
 
     - include_tasks: tasks/conda.yml
