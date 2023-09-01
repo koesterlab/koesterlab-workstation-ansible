@@ -3,10 +3,13 @@
   file:
     path: ~/.fonts
     state: directory
+    mode: "u=rwx,go="
+
 - name: Check if nerd font exists
   stat:
     path: ~/.fonts/HackNerdFontMono-Regular.ttf
   register: nerd_font
+
 - name: Download nerd font
   when: not nerd_font.stat.exists
   unarchive:
