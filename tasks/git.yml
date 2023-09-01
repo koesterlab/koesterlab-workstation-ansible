@@ -5,3 +5,4 @@
     git config --global gpg.format ssh
     git config --global user.signingkey ~/.ssh/{{ git_ssh_key }}
     git config --global pull.rebase false
+    git config --global init.defaultBranch main
