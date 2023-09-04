@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Install prerequisites
         run: |
-          dnf install -y ansible ssh git
+          dnf install -y ansible openssh-clients git
 
       - uses: actions/checkout@v3
 
