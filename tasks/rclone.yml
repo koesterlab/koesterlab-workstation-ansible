@@ -1,0 +1,7 @@
+- name: Install packages
+  become: yes
+  package:
+    name:
+      - rclone
+
+- name: 
