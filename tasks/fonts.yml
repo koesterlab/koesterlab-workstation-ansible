@@ -11,14 +11,23 @@
   register: nerd_font
 
 - name: dbg
-  shell: ls -l ~/.fonts
+  shell: |
+    echo $HOME
+    echo ~
+    ls -al ~
+    ls -l ~/.fonts
   register: dbg
 
 - debug: msg="{{ dbg.stdout_lines }}"
+
+- name: get home
+  shell: |
+    echo $HOME
+  register: home
 
 - name: Download nerd font
   when: not nerd_font.stat.exists
   unarchive:
     src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip
-    dest: ~/.fonts/
+    dest: {{ home }}/.fonts/
     remote_src: yes
