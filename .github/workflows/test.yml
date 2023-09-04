@@ -7,9 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: fedora:38
-      volumes:
-        - ${{ github.workspace }}:/github/workspace
+      # volumes:
+      #   - ${{ github.workspace }}:/github/workspace
     steps:
+      - name: Install prerequisites
+        run: |
+          dnf install -y ansible ssh git
+
+      - uses: actions/checkout@v3
+
       - name: Generate dummy keys for testing
         run: |
           ssh-keygen -f ~/.ssh/id_ikim -N testpass
