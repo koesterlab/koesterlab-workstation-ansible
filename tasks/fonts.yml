@@ -12,6 +12,9 @@
 
 - name: dbg
   shell: ls -l ~/.fonts
+  register: dbg
+
+- debug: msg="{{ dbg.stdout_lines }}"
 
 - name: Download nerd font
   when: not nerd_font.stat.exists
