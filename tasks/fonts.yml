@@ -29,5 +29,5 @@
   when: not nerd_font.stat.exists
   unarchive:
     src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip
-    dest: {{ home }}/.fonts/
+    dest: {{ home|trim }}/.fonts/
     remote_src: yes
