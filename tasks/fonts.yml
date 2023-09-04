@@ -10,6 +10,9 @@
     path: ~/.fonts/HackNerdFontMono-Regular.ttf
   register: nerd_font
 
+- name: dbg
+  shell: ls -l ~/.fonts
+
 - name: Download nerd font
   when: not nerd_font.stat.exists
   unarchive:
