@@ -18,6 +18,7 @@ jobs:
 
       - name: Generate dummy keys for testing
         run: |
+          mkdir -p ~/.ssh
           ssh-keygen -f ~/.ssh/id_ikim -N testpass
           ssh-keygen -f ~/.ssh/id_git -N testpass
 
