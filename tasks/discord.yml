@@ -1,0 +1,26 @@
+- name: Install packages
+  become: yes
+  package:
+    name:
+      - discord
+
+- name: Create discord settings dir
+  file:
+    path: ~/.config/discord
+    state: directory
+    mode: "u=rwx,go="
+
+- name: Create discord settings file
+  copy:
+    dest: ~/.config/discord/settings.json
+    force: false
+    content: "{}"
+
+- name: Configure discord
+  shell: |
+    function jqset() {
+      tmp=$(mktemp)
+      jq '."'$1'" = "'"$2"'"'  ~/.config/discord/settings.json > "$tmp"
+      mv "$tmp" ~/.config/discord/settings.json
+    }
+    jqset SKIP_HOST_UPDATE true
