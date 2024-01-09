@@ -1,7 +1,7 @@
 # koesterlab-workstation-ansible
 
 This ansible playbook configures the workstations in koesterlab to become a usable working environment.
-It assumes that Fedora Linux and ansible (`dnf install ansible`) has been already installed.
+It assumes that Fedora Linux and ansible (`sudo dnf install ansible`) has been already installed.
 
 ## Setup
 
