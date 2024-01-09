@@ -6,6 +6,7 @@
       - cargo
       - git
       - cmake
+      - clippy
       - "@Development Tools"
       - gsl-devel
       - gsl
