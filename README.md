@@ -11,7 +11,7 @@ If that is not already the case take a look at the [prerequisites](PREREQUISITES
 You have to create two SSH keys. One for the IKIM cluster, one for Git (unless you already have them).
 To do this, run:
 
-```
+```bash
 ssh-keygen -t ed25519 -f ~/.ssh/id_ikim
 ssh-keygen -t ed25519 -f ~/.ssh/id_git
 ```
