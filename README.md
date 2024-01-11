@@ -1,7 +1,8 @@
 # koesterlab-workstation-ansible
 
 This ansible playbook configures the workstations in koesterlab to become a usable working environment.
-It assumes that Fedora Linux and ansible (`dnf install ansible`) has been already installed.
+It assumes that Fedora Linux and ansible (`sudo dnf install ansible`) has been already installed.
+If that is not already the case take a look at the [prerequisites](PREREQUISITES.md)
 
 ## Setup
 
@@ -10,7 +11,7 @@ It assumes that Fedora Linux and ansible (`dnf install ansible`) has been alread
 You have to create two SSH keys. One for the IKIM cluster, one for Git (unless you already have them).
 To do this, run:
 
-```
+```bash
 ssh-keygen -t ed25519 -f ~/.ssh/id_ikim
 ssh-keygen -t ed25519 -f ~/.ssh/id_git
 ```
