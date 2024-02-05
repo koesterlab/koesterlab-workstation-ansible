@@ -4,6 +4,7 @@
     name:
       - rust
       - cargo
+      - rustfmt
       - git
       - cmake
       - "@Development Tools"
