@@ -43,7 +43,7 @@ Thus, in the future we can probably automate this via ansible, but for now you w
 1. Start your computer while repeatedly pressing `F12`.
 2. In the firmware, go to `Boot`.
 3. Select `New Boot Deive Priority` and switch it to `First`.
-4. Select `EFI` Boot Order`, deactivate the `Windows Boot Manager` and move it to the top of the Boot Order (with `F6`).
+4. Select `EFI Boot Order`, deactivate the `Windows Boot Manager` and move it to the top of the Boot Order (with `F6`).
 5. `Save and Exit` with `F10`.
 
 You can continue setting up Fedora by installing ansible with `sudo dnf install ansible` and following the guide in the [README.md](README.md) file.
