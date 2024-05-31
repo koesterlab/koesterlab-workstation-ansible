@@ -31,5 +31,19 @@ Once all the Windows tasks are done, you can install fedora.
 9. Confirm the partitioning scheme and start the actual installation.
 10. Upon completion, shut down the machine, remove the USB drive and start back up.
 
-If the installation was successfull, you can now select Fedora (and Windows) from the new GRUB menu. 
+If the installation was successfull, you can now select Fedora (and Windows) from the new GRUB menu.
+
+## safe-guard against Windows Updates kicking GRUB
+
+We have seen instances, where Windows updates lead to losing the GRUB menu.
+This seems to be known, and the solution is to [make the Windows Boot Manager the first entry in the EFI Boot Order, while also deactivating it](https://unix.stackexchange.com/a/547371).
+This [should be possible via `efibootmgr`](https://unix.stackexchange.com/a/547371), however its version `18` (current at the time of writing) [contains a bug that is prevents this](https://github.com/rhboot/efibootmgr/issues/186).
+Thus, in the future we can probably automate this via ansible, but for now you will have to do this via the system firmware:
+
+1. Start your computer while repeatedly pressing `F12`.
+2. In the firmware, go to `Boot`.
+3. Select `New Boot Deive Priority` and switch it to `First`.
+4. Select `EFI` Boot Order`, deactivate the `Windows Boot Manager` and move it to the top of the Boot Order (with `F6`).
+5. `Save and Exit` with `F10`.
+
 You can continue setting up Fedora by installing ansible with `sudo dnf install ansible` and following the guide in the [README.md](README.md) file.
