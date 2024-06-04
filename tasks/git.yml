@@ -3,6 +3,6 @@
     git config --global user.name "{{ git_name }}"
     git config --global user.email "{{ git_email }}"
     git config --global gpg.format ssh
-    git config --global user.signingkey ~/.ssh/{{ git_ssh_key }}
+    git config --global user.signingkey ~/.ssh/{{ git_ssh_key }}.pub
     git config --global pull.rebase false
     git config --global init.defaultBranch main
