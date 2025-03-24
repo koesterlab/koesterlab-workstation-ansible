@@ -6,7 +6,7 @@
     description: Zoom repository
     file: zoom
     baseurl: https://repo.zoom.us/repo/rpm/release/
-    gpgkey: https://zoom.us/linux/download/pubkey?version=5-12-6
+    gpgkey: https://repo.zoom.us/repo/rpm/release/repodata/repomd.xml.key
     gpgcheck: yes
 
 - name: Install Zoom
