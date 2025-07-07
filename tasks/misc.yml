@@ -8,3 +8,4 @@
       - dnf-automatic
       - inkscape
       - texlive-scheme-full
+      - pdf-arranger
