@@ -12,4 +12,4 @@
       - gsl-devel
       - gsl
       - perl-IPC-Cmd # needed for rust openssl-sys
-      - clang-devel # needed for buildign some rust packages (e.g. rust-htslib)
+      - clang-devel # needed for building some rust packages (e.g. rust-htslib)
