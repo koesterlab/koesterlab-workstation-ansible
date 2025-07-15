@@ -1,6 +1,6 @@
 # https://github.com/FrameworkComputer/linux-docs/blob/main/Fedora38-13thGen.md
 - name: Frame.work 13th gen workarounds
-  become: yes
+  become: true
   shell: |
     sudo grubby --update-kernel=ALL --args="module_blacklist=hid_sensor_hub"
     sudo grubby --update-kernel=ALL --args="nvme.noacpi=1"

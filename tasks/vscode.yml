@@ -1,6 +1,6 @@
 # taken from https://github.com/gantsign/ansible-role-visual-studio-code
 - name: Install VS Code repo
-  become: yes
+  become: true
   yum_repository:
     name: code
     description: Visual Studio Code repo
@@ -10,7 +10,7 @@
     gpgcheck: yes
 
 - name: Install packages
-  become: yes
+  become: true
   package:
     name:
       - code

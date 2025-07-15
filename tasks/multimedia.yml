@@ -1,5 +1,5 @@
 - name: Import RPM Fusion keys
-  become: yes
+  become: true
   rpm_key:
     key: "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-{{ item }}-fedora-2020"
   loop:
@@ -7,7 +7,7 @@
     - nonfree
 
 - name: Enable the RPM Fusion repository
-  become: yes
+  become: true
   package:
     name:
       - "https://mirrors.rpmfusion.org/{{ item }}/fedora/rpmfusion-{{ item }}-release-{{ ansible_distribution_major_version }}.noarch.rpm"
@@ -16,7 +16,7 @@
     - nonfree
 
 - name: Rpmfusion multimedia
-  become: yes
+  become: true
   shell: |
     dnf swap ffmpeg-free ffmpeg --allowerasing -y
     dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin -y
