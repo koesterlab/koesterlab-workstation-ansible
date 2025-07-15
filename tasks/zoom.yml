@@ -1,6 +1,6 @@
 # adapted from https://github.com/gantsign/ansible-role-visual-studio-code
 - name: Install Zoom repository
-  become: yes
+  become: true
   yum_repository:
     name: zoom
     description: Zoom repository
@@ -10,7 +10,7 @@
     gpgcheck: yes
 
 - name: Install Zoom
-  become: yes
+  become: true
   package:
     name:
       - zoom
