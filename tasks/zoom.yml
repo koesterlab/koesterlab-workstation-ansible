@@ -1,10 +1,16 @@
-- name: Import zoom RPM key
+# adapted from https://github.com/gantsign/ansible-role-visual-studio-code
+- name: Install Zoom repository
   become: true
-  rpm_key:
-    key: https://zoom.us/linux/download/pubkey?version=5-12-6
-    
-- name: Install zoom and enable repo
+  yum_repository:
+    name: zoom
+    description: Zoom repository
+    file: zoom
+    baseurl: https://repo.zoom.us/repo/rpm/release/
+    gpgkey: https://repo.zoom.us/repo/rpm/release/repodata/repomd.xml.key
+    gpgcheck: yes
+
+- name: Install Zoom
   become: true
   package:
     name:
-      - https://zoom.us/client/latest/zoom_x86_64.rpm
+      - zoom
