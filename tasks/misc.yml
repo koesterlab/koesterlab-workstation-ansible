@@ -1,5 +1,5 @@
 - name: Install packages
-  become: yes
+  become: true
   package:
     name:
       - util-linux-user
@@ -9,3 +9,8 @@
       - inkscape
       - texlive-scheme-full
       - pdfarranger
+
+- name: Configure dnf-automatic
+  become: true
+  shell: |
+    systemctl enable --now dnf-automatic.timer

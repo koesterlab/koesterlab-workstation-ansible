@@ -1,5 +1,5 @@
 - name: Enable Fedora Coprs
-  become: yes
+  become: true
   community.general.copr:
     name: "{{ item }}"
   loop:
