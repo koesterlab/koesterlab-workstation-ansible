@@ -8,6 +8,7 @@
       - dnf-automatic
       - inkscape
       - texlive-scheme-full
+      - pdfarranger
 
 - name: Configure dnf-automatic
   become: true
