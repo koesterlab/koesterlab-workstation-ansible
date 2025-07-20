@@ -1,0 +1,6 @@
+- name: Install packages
+  become: true
+  when: install_utils is defined and install_utils == true
+  package:
+    name:
+      - htop

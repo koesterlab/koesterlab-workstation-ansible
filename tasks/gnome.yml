@@ -1,0 +1,20 @@
+- name: Install GNOME tweaks
+  become: true
+  when: install_gnome_tweaks is defined and install_gnome_tweaks == true
+  package:
+    name:
+      - gnome-tweaks
+
+- name: Ensure flatpak
+  become: true
+  when: install_gnome_extensions is defined and install_gnome_extensions == true
+  package:
+    name:
+      - flatpak
+
+- name: Install GNOME extension module
+  become: true
+  when: install_gnome_extensions is defined and install_gnome_extensions == true
+  community.general.flatpak:
+    name: org.gnome.Extensions
+    state: present

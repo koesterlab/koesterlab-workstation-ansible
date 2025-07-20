@@ -1,0 +1,6 @@
+- name: Install packages
+  become: true
+  when: install_thunderbird is defined and install_thunderbird == true
+  package:
+    name:
+      - thunderbird
