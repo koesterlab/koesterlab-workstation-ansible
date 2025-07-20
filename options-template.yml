@@ -1,0 +1,4 @@
+install_utils: false
+install_thunderbird: false
+install_gnome_tweaks: false
+install_gnome_extensions: false
