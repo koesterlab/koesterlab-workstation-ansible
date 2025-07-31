@@ -61,8 +61,8 @@ You will be asked for the `BECOME password`. This is simply your user password.
 In order to adapt to changes in the workstation setup, simply rerun the playbook with the same command.
 Ansible will automatically only execute the changes.
 
-If you would like to add any optional packages, you can add the desired options to your 
-`~/.config/ansible/options.yml`. A template with existing options is found in `options-template.yml` 
+If you would like to add any optional packages, you can add the desired options to your
+`~/.config/ansible/options.yml`. A template with existing options is found in `options-template.yml`
 inside the repository.
 
 ### Step 5: Optionally enable fractional scaling of fonts (to get larger font sizes)
