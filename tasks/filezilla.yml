@@ -1,0 +1,6 @@
+- name: Install packages
+  become: true
+  when: install_filezilla is defined and install_filezilla == true
+  package:
+    name:
+      - filezilla

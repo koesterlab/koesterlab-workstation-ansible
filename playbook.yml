@@ -40,3 +40,7 @@
     - include_tasks: tasks/thunderbird.yml
 
     - include_tasks: tasks/gnome.yml
+
+    - include_tasks: tasks/filezilla.yml
+
+    - include_tasks: tasks/pixi.yml
