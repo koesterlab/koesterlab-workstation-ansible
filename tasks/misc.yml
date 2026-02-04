@@ -9,7 +9,6 @@
       - inkscape
       - texlive-scheme-full
       - pdfarranger
-      - gedit
 
 - name: Configure dnf-automatic
   become: true
