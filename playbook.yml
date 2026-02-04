@@ -2,8 +2,11 @@
 
   vars_files:
     - ~/.config/ansible/vars.yml
+    - ~/.config/ansible/options.yml
 
   tasks:
+    # mandatory tasks
+    
     - include_tasks: tasks/coprs.yml
 
     - include_tasks: tasks/framework.yml
@@ -29,3 +32,15 @@
     - include_tasks: tasks/misc.yml
 
     - include_tasks: tasks/conda.yml
+    
+    # optional tasks
+    
+    - include_tasks: tasks/util.yml
+
+    - include_tasks: tasks/thunderbird.yml
+
+    - include_tasks: tasks/gnome.yml
+
+    - include_tasks: tasks/filezilla.yml
+
+    - include_tasks: tasks/pixi.yml
