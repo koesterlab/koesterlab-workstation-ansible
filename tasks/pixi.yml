@@ -1,0 +1,12 @@
+- name: Ensure curl is installed
+  become: true
+  package:
+    name: curl
+    state: present
+
+- name: Download and run Pixi install script
+  when: install_pixi is defined and install_pixi == true
+  shell: |
+    curl -fsSL https://pixi.sh/install.sh | bash
+  args:
+    executable: /bin/bash
